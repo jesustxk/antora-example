@@ -19,8 +19,12 @@ jobs:
         run: |
           apk update && apk add git rsync
 
+      - name: Fix problem with ownership
+        run:
+          git config --global --add safe.directory /__w/antora-actions/antora-actions/github-pages-deploy-action-temp-deployment-folder
+
       - name: Checkout 🛎️
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Install dependencies
         run: npm install
@@ -40,7 +44,6 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4.4.2
         if: contains(github.ref,'refs/heads/main')
         with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
           branch: gh-pages
           folder: docs
           clean: true

@@ -21,7 +21,7 @@ jobs:
 
       - name: Fix problem with ownership
         run:
-          git config --global --add safe.directory /__w/antora-actions/antora-actions/github-pages-deploy-action-temp-deployment-folder
+          git config --global --add safe.directory /__w/antora-example/antora-example/github-pages-deploy-action-temp-deployment-folder
 
       - name: Checkout 🛎️
         uses: actions/checkout@v3
